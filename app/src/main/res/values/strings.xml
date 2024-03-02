@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidClient</string>
+    <string name="client_is_running_you_are_good_to_close_this_app">Client is running. You are good to close this app.</string>
 </resources>

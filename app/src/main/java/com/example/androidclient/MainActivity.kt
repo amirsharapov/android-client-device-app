@@ -48,22 +48,4 @@ class MainActivity : ComponentActivity() {
         val manager = getSystemService(NotificationManager::class.java)
         manager.createNotificationChannel(channel)
     }
-
-    fun onStartService(view: View?) {
-        Log.i(TAG, "onStartService: Method called")
-        val serviceIntent = Intent(
-            this,
-            Service::class.java
-        )
-        startService(serviceIntent)
-    }
-
-    fun onStopService(view: View?) {
-        Log.i(TAG, "onStopService: Method called")
-        val serviceIntent = Intent(
-            this,
-            Service::class.java
-        )
-        stopService(serviceIntent)
-    }
 }

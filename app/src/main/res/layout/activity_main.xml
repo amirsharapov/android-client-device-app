@@ -7,24 +7,12 @@
     android:gravity="center"
     android:padding="16dp"
     tools:context=".MainActivity">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:text="Start Service"
-        android:textAllCaps="false"
-        android:onClick="onStartService"
-        tools:ignore="HardcodedText"
-    />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Stop Service"
-        android:textAllCaps="false"
-        android:onClick="onStopService"
-        tools:ignore="HardcodedText"
+        android:text="@string/client_is_running_you_are_good_to_close_this_app"
+        android:textSize="24sp"
+        android:gravity="center"
     />
 </LinearLayout>
