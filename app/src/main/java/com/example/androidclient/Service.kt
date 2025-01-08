@@ -80,7 +80,10 @@ class Service : Service() {
 
     inner class HTTPServer() : NanoHTTPD(8080) {
         override fun serve(session: IHTTPSession): Response {
-            val image = mediaProjectionImageReader!!.getImage()
+            val qualityParam = session.parameters["quality"]?.get(0)
+            val quality = qualityParam?.toIntOrNull() ?: 100
+
+            val image = mediaProjectionImageReader!!.getImage(quality)
             val imageMimeType = "image/jpeg"
 
             return newFixedLengthResponse(

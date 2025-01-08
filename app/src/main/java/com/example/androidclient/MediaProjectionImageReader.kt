@@ -20,7 +20,7 @@ class MediaProjectionImageReader(mediaProjection: MediaProjection) {
 
     private val mediaProjection: MediaProjection
     private val imageReader: ImageReader
-    private var cachedImage: ByteArray? = null
+    private var lastImage: ByteArray? = null
 
     init {
         this.mediaProjection = mediaProjection
@@ -51,8 +51,8 @@ class MediaProjectionImageReader(mediaProjection: MediaProjection) {
         )
     }
 
-    fun getImage(): ByteArray? {
-        val image = imageReader.acquireLatestImage() ?: return cachedImage
+    fun getImage(quality: Int = 100): ByteArray? {
+        val image = imageReader.acquireLatestImage() ?: return lastImage
 
         val planes = image.planes
         val buffer = planes[0].buffer
@@ -72,12 +72,12 @@ class MediaProjectionImageReader(mediaProjection: MediaProjection) {
         )
 
         bitmap.copyPixelsFromBuffer(buffer)
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, quality, stream)
 
         image.close()
 
-        cachedImage = stream.toByteArray()
+        lastImage = stream.toByteArray()
 
-        return cachedImage
+        return lastImage
     }
 }
